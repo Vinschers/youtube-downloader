@@ -12,3 +12,6 @@ ytd -url <video_url> -path <save_path>
 ```
 
 The path argument is optinional. Default path saves to ./downloaded/
+
+##Cipher error
+If you receive a cipher error, check this link https://stackoverflow.com/a/62115943/12720904
