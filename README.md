@@ -1,13 +1,13 @@
 # youtube-downloader
-Very simple python script that downloads a video from youtube and saves it in mp3, adding the cover art as the video thumbnail
-## usage
+Very simple python script that downloads a video from youtube and saves it in mp3, adding the video thumbnail as the cover art
+## Usage
 Through python script:
-```sh
+```
 python yt-downloader.py -url <video_url> -path <save_path>
 ```
 Through exe file:
 
-```sh
+```
 ytd -url <video_url> -path <save_path>
 ```
 
