@@ -5,7 +5,7 @@ from difflib import SequenceMatcher
 from pytube import YouTube
 import ffmpeg
 from mutagen.mp3 import MP3
-from mutagen.id3 import ID3, APIC, error
+from mutagen.id3 import ID3, APIC, error, TIT2, TALB, TPE1, TPE2, COMM, TCOM, TCON, TDRC, ID3NoHeaderError
 import urllib
 
 
@@ -52,9 +52,18 @@ def main():
 				audiofile.add_tags()
 			except error:
 				pass
-			
+
+			try:
+				tags = ID3(nPath)
+			except ID3NoHeaderError:
+				print("Adding ID3 header")
+				tags = ID3()
+
+			tags["TPE1"] = TPE1(encoding=3, text=u"{}".format(video.author))
+
 			audiofile.tags.add(APIC(mime='image/jpeg',type=3,desc=u'Cover',data=imgData))
 			audiofile.save()
+			tags.save(nPath)
 
 			os.remove(path+file)
 
